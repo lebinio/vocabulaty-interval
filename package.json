@@ -1,0 +1,19 @@
+{
+  "name": "vocabulaty-interval",
+  "version": "1.0.0",
+  "description": "Application to help learning vocabulary on Windows 10",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/lebinhxz/vocabulaty-interval.git",
+  "keywords": [
+    "vocabulary",
+    "interval"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^8.0.1"
+  }
+}
