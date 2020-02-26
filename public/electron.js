@@ -1,22 +1,17 @@
-// Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
-const path = require('path')
+const path = require('path');
 
-function createWindow () {
+const isDev = require('electron-is-dev');
+
+function createWindow() {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
-  })
-
-  // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
-
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  const mainWindow = new BrowserWindow({ width: 800, height: 600 });
+  mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
+  if (isDev) {
+    // Open the DevTools.
+    //BrowserWindow.addDevToolsExtension('<location to your react chrome extension>');
+    mainWindow.webContents.openDevTools();
+  }
 }
 
 // This method will be called when Electron has finished
