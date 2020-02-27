@@ -1,0 +1,9 @@
+.mainContainer {
+  padding: 20px;
+}
+
+.example {
+  width: 244px;
+  word-wrap: break-word;
+  padding: 10px;
+}
