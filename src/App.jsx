@@ -1,18 +1,33 @@
-import React from 'react';
-import { Container, Grid, Typography, Divider } from '@material-ui/core';
+import React, { useEffect } from 'react';
+import {
+  Container, //
+  Grid,
+  Typography,
+  Divider,
+} from '@material-ui/core';
+import Electron from 'electron';
 
 import styles from './App.module.css';
 
+const { dialog } = Electron.remote;
+
 function App() {
+  useEffect(() => {
+  }, []);
+
   return (
     <>
       <Container className={styles.mainContainer}>
         <Grid container direction="column" justify="center" alignItems="center">
           <Grid item>
-            <Typography variant="h6" color="primary">abide by (v)</Typography>
+            <Typography variant="h6" color="primary">
+              abide by (v)
+            </Typography>
           </Grid>
           <Grid item>
-            <Typography variant="subtitle1" color="secondary">/ə'baid/</Typography>
+            <Typography variant="subtitle1" color="secondary">
+              /ə'baid/
+            </Typography>
           </Grid>
           <Grid item>
             <Typography variant="body1">tôn trọng, tuân theo, giữ (lời)</Typography>
