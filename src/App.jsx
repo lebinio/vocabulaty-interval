@@ -9,10 +9,54 @@ import Electron from 'electron';
 
 import styles from './App.module.css';
 
-const { dialog } = Electron.remote;
+const { BrowserWindow, screen, getCurrentWindow } = Electron.remote;
 
 function App() {
   useEffect(() => {
+    const mainWindow = getCurrentWindow();
+
+    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+
+    let win = new BrowserWindow({
+      parent: mainWindow,
+      x: width - 320,
+      y: height - 200,
+      width: 320,
+      height: 200,
+      resizable: false,
+      movable: false,
+      alwaysOnTop: true,
+      frame: false,
+      transparent: true,
+    });
+    win.on('closed', () => {
+      win = null;
+    });
+
+    const html = `<html lang="en">
+      <head>
+        <title>Popover</title>
+        <style>
+          .popover-container {
+            height: 100%;
+            width: 100%;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="popover-container">
+          <h1>Welcome, this is the Index page.</h1>
+          <h3>Hello there</h3>
+        </div>
+      </body>
+      </html>`;
+
+    function closePopover() {
+      win.close();
+    }
+
+    win.loadURL(`data:text/html;charset=utf-8,${encodeURI(html)}`);
+    setTimeout(closePopover, 5000);
   }, []);
 
   return (
